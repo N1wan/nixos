@@ -25,8 +25,25 @@
           ./configuration.nix
           ./hardware-configuration.nix
 
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.niwan = import ./home.nix;
+          }
+        ];
+      };
+
+	  # for nixos-anywhere
+      nixosConfigurations.generic = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./nixos-anywhere/hardware-configuration.nix
+
           disko.nixosModules.disko
-          ./disko.nix
+          ./nixos-anywhere/disko.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -35,6 +52,8 @@
 
             home-manager.users.niwan = import ./home.nix;
           }
+
+		  ./nixos-anywhere/setup.nix
         ];
       };
     };
