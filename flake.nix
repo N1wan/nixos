@@ -52,8 +52,6 @@
 
             home-manager.users.niwan = import ./home.nix;
           }
-
-		  ./nixos-anywhere/setup.nix
         ];
       };
     };
