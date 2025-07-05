@@ -15,8 +15,9 @@
   outputs =
     {
       nixpkgs,
-      disko,
+	  hardware-config,
       home-manager,
+      disko,
       ...
     }:
     {
