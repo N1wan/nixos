@@ -9,6 +9,7 @@
       url = "github:nix-community/home-manager/release-25.05";
 	  inputs.nixpkgs.follows = "nixpkgs";
 	};
+    hardware-config.url = "path:/home/niwan/nixos-hardware";
   };
 
   outputs =
@@ -23,7 +24,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./hardware-configuration.nix
+          hardware-config.nixosModules.hardware
 
           home-manager.nixosModules.home-manager
           {
